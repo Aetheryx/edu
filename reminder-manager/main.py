@@ -1,27 +1,31 @@
-from threading import Timer # Wat we gebruiken voor de interval functie die checkt voor herrineringen die geleverd moeten worden
+from threading import Timer # Dit is een asynchrone timer die ervoor zorgt
+                            # dat we tegelijkertijd twee threads kunnen draaien
+                            # zonder dat de ene de ander blokeert
 
-from utils.parseCommand import parseCommand
-from utils.databaseFunctions import checkForExpired
-from utils.colors import colors
+from utils.parseerCommando import parseerCommando # De functie die zal herkennen wanneer iets wel of niet een commando is
+from utils.databaseFuncties import findExpiring # De functie die kijkt of er uitlopende herrinering zijn
+from utils.kleurtjes import kleurtjes # Het object wat alle ANSI-kleurcodes bevat voor de kleurtjes in de terminal
 
-def setInterval (func, sec):
-    def funcWrapper ():
-        setInterval(func, sec)
+def zetInterval (func, sec): # Dit een functie die (asynchroon, dus zonder het programma te stoppen) andere functies kan draaien
+    def funcWrapper (): # Deze functie zal de gegeven functie oproepen en dan weer de vaderfunctie roepen
+        zetInterval(func, sec)
         func()
-    t = Timer(sec, funcWrapper)
-    t.start()
+    t = Timer(sec, funcWrapper) # Hier zorgen we ervoor dat de funcWrapper functie na
+    t.start()                   # zoveel tijd pas gerund word, met een asynchrone timer
     return t
 
-setInterval(checkForExpired, 1)
+zetInterval(findExpiring, 1) # We starten hier het interval dat zoekt naar uitlopende herrineringen
 
-while True:
+while True: # Hier starten we de loop dat zorgt voor het simuleren van de terminal - 
+            # We sturen een input(), en (synchroon) zal het programma wachten totdat de executie
+            # van die input() (dus totdat we drukken op enter) afloopt. Wanneer dat gebeurd, beginnen we opnieuw.
   try:
-    parseCommand()
-  except KeyboardInterrupt:
-    print(colors['RESET'] + colors['GRIJS'] +
+    parseerCommando() # Probeer een commando te herkennen van de input.
+  except KeyboardInterrupt: # Wanneer we tijdens dat process een KeyboardInterrupt opvangen (een Ctrl-C, bedoeld om het programma te stoppen)
+    print(kleurtjes['RESET'] + kleurtjes['GRIJS'] + # vertellen we de gebruiker dat er een 'exit' commando is.
       '\nGebruik het' +
-      colors['BOLD'] + colors['ROOD'] +
+      kleurtjes['BOLD'] + kleurtjes['ROOD'] +
       ' exit ' +
-      colors['RESET'] + colors['GRIJS'] +
+      kleurtjes['RESET'] + kleurtjes['GRIJS'] +
       'commando om het programma te sluiten.' + 
-      colors['RESET'])
+      kleurtjes['RESET'])

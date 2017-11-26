@@ -1,4 +1,7 @@
-colors = {
+# Dit bestand bevat alle ANSI-kleurcodes die in het project gebruikt worden
+# om de terminal mooie kleurtjes te geven.
+
+kleurtjes = {
   'RESET': '\u001b[0m',
   'BOLD' : '\u001b[1m',
   'ROOD' : '\u001b[31m',
