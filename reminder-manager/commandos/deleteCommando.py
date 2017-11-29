@@ -29,6 +29,12 @@ def deleteCommando (input):
   else: # Als er wel een herrinering gevonden was,
     print( # vertellen we de gebruiker dat de herrinering gewist is.
       kleurtjes['RESET'] + kleurtjes['GROEN'] +
-      'Reminder successvol gewist.' +
+      'Herrinering ' + 
+      kleurtjes['CYAAN'] + '"' +
+      input +
+      '"' + kleurtjes['RESET'] + kleurtjes['GROEN'] +
+      ' successvol gewist.' +
       kleurtjes['RESET']
     )
+
+deleteHelp = 'hulp voor delete'

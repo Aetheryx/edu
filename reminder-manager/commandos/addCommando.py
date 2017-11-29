@@ -14,31 +14,42 @@ def addCommando (input):
   if regex: # Als dat zo is,
     addReminder(regex.group(1), float(regex.group(2)) * omgerekend[regex.group(3)]) # voegen we een herrinering toe.
     print(
-      kleurtjes['GROEN'] +
-      'Herrinering successvol toegevoegd.' +
+      kleurtjes['RESET'] + kleurtjes['GROEN'] +
+      'Herrinering ' + 
+      kleurtjes['CYAAN'] + '"' +
+      regex.group(1) +
+      '"' + kleurtjes['RESET'] + kleurtjes['GROEN'] +
+      ' successvol toegevoegd.' +
       kleurtjes['RESET']
     )
   else: # Als dat niet zo is,
+    groen_KD = kleurtjes['RESET'] + kleurtjes['GROEN'] + '<' + kleurtjes['GRIJS']
+    groen_GD = kleurtjes['RESET'] + kleurtjes['GROEN'] + '>' + kleurtjes['RESET']
     print( # vertellen we de gebruiker hoe je het commando gebruikt.
       kleurtjes['RESET'] + kleurtjes['GROEN'] +
       'Gebruik: ' +
       kleurtjes['RESET'] + kleurtjes['GRIJS'] +
-      'add <herrinering_tekst> <tijdstip>\n' +
+      'add ' +
+      groen_KD + 
+      'herrinering_tekst' +
+      groen_GD +
+      ' ' +
+      groen_KD +
+      'tijdstip' + 
+      groen_GD +
       kleurtjes['RESET'] +
-      'waarbij' +
+
+      '\nwaarbij' +
       kleurtjes['GRIJS'] +
       ' tijdstip ' +
       kleurtjes['RESET'] +
       'het volgende schema volgt:\n' + 
-      kleurtjes['GROEN'] +
-      '<' +
-      kleurtjes['GRIJS'] +
+      groen_KD +
       'getal' +
-      kleurtjes['GROEN'] +
-      '><' +
-      kleurtjes['GRIJS'] +
+      groen_GD +
+      groen_KD +
       's|m|h|d' +
-      kleurtjes['GROEN'] +
-      '>' +
-      kleurtjes['RESET']
+      groen_GD
     )
+
+addHelp = 'hulp voor delete'
