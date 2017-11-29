@@ -3,8 +3,10 @@ from platform import system # Een functie die ons verteld welk operatiesysteem w
 operatieSysteem = system() # ...dit slaan we op in een variabele, zodat we niet steeds de functie oproepen
 import os
 
-if system == 'Windows': # Omdat Windows een buitenbeentje is en niet via de terminal een commando heeft voor notificaties,
+
+if operatieSysteem == 'Windows': # Omdat Windows een buitenbeentje is en niet via de terminal een commando heeft voor notificaties,
   from win10toast import ToastNotifier # gebruiken we een externe bibliotheek voor notificaties op Windows.
+  notify = ToastNotifier().show_toast
 
 extensies = {
   'Darwin': 'png',
@@ -19,7 +21,7 @@ def stuurNotificatie (title, desc):
   elif operatieSysteem == 'Darwin':
     exec(['osascript', '-e', 'display notification ' + desc + ' with title ' + title]) # Als het operatiesysteem macOS is, gebruiken we een AppleScript/OSA-script.
   elif operatieSysteem == 'Windows':
-    ToastNotifier.show_toast( # Als het operatiesysteem Windows is, gebruiken we de bibliotheek.
+    notify( # Als het operatiesysteem Windows is, gebruiken we de bibliotheek.
       title,
       desc,
       icon_path=afbeeldingPath,
