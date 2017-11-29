@@ -4,3 +4,5 @@ from utils.kleurtjes import kleurtjes # Het object wat alle ANSI-kleurcodes beva
 def exitCommando (input = None):
   print(kleurtjes['RESET'] + 'Doei!')
   _exit(0)
+
+exitHelp = 'hulp voor exit'

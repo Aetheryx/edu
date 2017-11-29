@@ -26,3 +26,5 @@ def listCommando (input = None):
     ')'
     for reminder in reminders]
   print('\n'.join(reminders) + kleurtjes['RESET'])
+
+listHelp = 'hulp voor list'
