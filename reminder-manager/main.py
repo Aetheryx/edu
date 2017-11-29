@@ -16,6 +16,17 @@ def zetInterval (func, sec): # Dit een functie die (asynchroon, dus zonder het p
 
 zetInterval(findExpiring, 1) # We starten hier het interval dat zoekt naar uitlopende herrineringen
 
+
+print(
+  kleurtjes['GROEN'] +
+  'Welkom! Probeer het commando' + 
+  kleurtjes['CYAAN'] +
+  ' help ' +
+  kleurtjes['RESET'] + kleurtjes['GROEN'] +
+  'voor een lijst met commandos.' +
+  kleurtjes['RESET']
+)
+
 while True: # Hier starten we de loop dat zorgt voor het simuleren van de terminal - 
             # We sturen een input(), en (synchroon) zal het programma wachten totdat de executie
             # van die input() (dus totdat we drukken op enter) afloopt. Wanneer dat gebeurd, beginnen we opnieuw.
