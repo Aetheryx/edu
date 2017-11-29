@@ -16,7 +16,7 @@ def addReminder (reminderText, expiryDate):
   collection.posts.insert_one(doc)
 
 def deleteReminderByID (id):
-  collection.posts.delete_one({ '_id': id }) 
+  return collection.posts.delete_one({ '_id': id }) 
 
 def deleteReminderByContent (content):
   return collection.posts.delete_one({ 'reminderText': content })
@@ -35,5 +35,5 @@ def findExpiring ():
     }
   })
   for reminder in cursor: # Voor elk van deze uitgelopen herrineringen,
-    stuurNotificatie('Uw Herrinering', reminder['reminderText']) # sturen we een notificatie
     deleteReminderByID(reminder['_id']) # en verwijderen we de herrinering
+    stuurNotificatie('Uw Herrinering', reminder['reminderText']) # sturen we een notificatie
