@@ -12,13 +12,33 @@ omgerekend = { # De omgerekende nummers voor hoeveel secondes die notatie is
 def addCommando (input):
   regex = re.search('(.*) ([0-9.]*)(s|m|h|d)', input) # We kijken of de input voldoet aan het schema voor het commando.
   if regex: # Als dat zo is,
-    print(kleurtjes['RESET'] + 'goedzo')
     addReminder(regex.group(1), float(regex.group(2)) * omgerekend[regex.group(3)]) # voegen we een herrinering toe.
+    print(
+      kleurtjes['GROEN'] +
+      'Herrinering successvol toegevoegd.' +
+      kleurtjes['RESET']
+    )
   else: # Als dat niet zo is,
     print( # vertellen we de gebruiker hoe je het commando gebruikt.
       kleurtjes['RESET'] + kleurtjes['GROEN'] +
       'Gebruik: ' +
       kleurtjes['RESET'] + kleurtjes['GRIJS'] +
-      'add herrinering_tekst tijdstip' +
+      'add <herrinering_tekst> <tijdstip>\n' +
+      kleurtjes['RESET'] +
+      'waarbij' +
+      kleurtjes['GRIJS'] +
+      ' tijdstip ' +
+      kleurtjes['RESET'] +
+      'het volgende schema volgt:\n' + 
+      kleurtjes['GROEN'] +
+      '<' +
+      kleurtjes['GRIJS'] +
+      'getal' +
+      kleurtjes['GROEN'] +
+      '><' +
+      kleurtjes['GRIJS'] +
+      's|m|h|d' +
+      kleurtjes['GROEN'] +
+      '>' +
       kleurtjes['RESET']
     )
