@@ -3,14 +3,16 @@ from utils.databaseFuncties import deleteReminderByContent # De database functie
 
 def deleteCommando (input):
   if not input: # Als er geen input is vertellen we de gebruiker hoe je het commando gebruikt.
-    return print(kleurtjes['RESET'] + kleurtjes['GROEN'] +
+    return print(
+      kleurtjes['RESET'] + kleurtjes['GROEN'] +
       'Gebruik: ' +
       kleurtjes['RESET'] + kleurtjes['GRIJS'] +
       'delete herrinering_text' +
-      kleurtjes['RESET'])
+      kleurtjes['RESET']
+    )
 
   res = deleteReminderByContent(input) # Voer de database functie uit om de (potentiele) herrinering te verwijderen.
-  if rex.deleted_count == 0: # Als er geen herrineringen zijn verwijderd, dus als er geen herrineringen zijn verwijderd,
+  if res.deleted_count == 0: # Als er geen herrineringen zijn verwijderd, dus als er geen herrineringen zijn verwijderd,
     print( # vertellen we de gebruiker dat er geen herrinering gevonden was.
       kleurtjes['RESET'] + kleurtjes['ROOD'] +
       'Ik heb geen herrinering met de naam ' +

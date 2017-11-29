@@ -22,10 +22,12 @@ while True: # Hier starten we de loop dat zorgt voor het simuleren van de termin
   try:
     parseerCommando() # Probeer een commando te herkennen van de input.
   except KeyboardInterrupt: # Wanneer we tijdens dat process een KeyboardInterrupt opvangen (een Ctrl-C, bedoeld om het programma te stoppen)
-    print(kleurtjes['RESET'] + kleurtjes['GRIJS'] + # vertellen we de gebruiker dat er een 'exit' commando is.
+    print( # vertellen we de gebruiker dat er een 'exit' commando is.
+      kleurtjes['RESET'] + kleurtjes['GRIJS'] +
       '\nGebruik het' +
       kleurtjes['BOLD'] + kleurtjes['ROOD'] +
       ' exit ' +
       kleurtjes['RESET'] + kleurtjes['GRIJS'] +
       'commando om het programma te sluiten.' + 
-      kleurtjes['RESET'])
+      kleurtjes['RESET']
+    )
