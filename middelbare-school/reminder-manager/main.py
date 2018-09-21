@@ -23,7 +23,7 @@ print(
   kleurtjes['CYAAN'] +
   ' help ' +
   kleurtjes['RESET'] + kleurtjes['GROEN'] +
-  'voor een lijst met commandos.' +
+  'voor een lijst met commandos.\n' +
   kleurtjes['RESET']
 )
 
