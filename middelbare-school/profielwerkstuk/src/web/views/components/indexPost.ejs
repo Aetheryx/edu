@@ -1,0 +1,39 @@
+<!--
+ - Dit is een "post preview" - het zijn dus de divs die je ziet op de index pagina voor posts.
+-->
+
+<div class="container" style="margin-top: 1em;" categories="<%= post.categories %>">
+  <a href="/posts/<%= post._id %>" style="text-decoration: none;">
+    <div class="card notification is-primary">
+      <p class="title is-4" style="margin-bottom: 6px;">
+        <%= post.title %>
+      </p>
+
+      <div class="level">
+        
+        <div class="level-left">
+          <div>
+            <div class="media-content" style="overflow-x: hidden; overflow-y: hidden;" >
+              <p class="subtitle is-6">
+                Geschreven door <%= post.author %><br>
+                Categorieen: <%= post.categories %>
+              </p>
+            </div>
+            <time>
+              <%= new Date(post.createdAt).toLocaleString() %>
+            </time>
+          </div>
+        </div>
+
+        <div class="level-right">
+          <span class="icon">
+            <i style="margin-right: 4px;" class="fas fa-comment"></i>
+            <p><%= post.commentCount %></p>
+          </span>
+        </div>
+      
+      </div>
+
+    </div>
+  </a>
+</div>

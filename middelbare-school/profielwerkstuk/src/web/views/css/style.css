@@ -1,0 +1,95 @@
+body {
+  background-color: #2c2f33;
+}
+
+.navbar {
+  background-color: #23272a !important;
+}
+
+.navbar-item {
+  color: hsl(0, 0%, 98%)
+}
+
+.navbar-item a {
+  color: hsl(0, 0%, 98%) !important;
+}
+
+div.column {
+  margin: 10px;
+}
+
+@keyframes slideFromTop {
+  from { transform: translate(0px, -1000px); }
+  to   { transform: translate(0px, 0px); }
+}
+
+.slideInTop {
+  animation: slideFromTop 1s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+.fadeIn {
+  opacity: 0;
+  animation: fadeIn 1s ease-out 0.2s forwards;
+}
+
+.navbar.level { background: none!important; }
+
+.media + .media {
+  border-top: 1px solid #222;
+}
+
+.navbar-item:hover {
+  background-color: #00d1b2 !important;
+  transition: background-color 0.3s ease;
+}
+
+.navbar-item {
+  transition: background-color 0.3s ease;
+}
+
+a.navbar-item:hover {
+  color: #fff !important;
+}
+
+body, html {
+  overflow:auto;
+}
+
+html {
+  height: 100%;
+}
+body {
+  min-height: 100%;
+}
+
+.navbar-menu.is-active {
+  background-color: #23272a !important;
+}
+
+.vertical-center {
+  display: flex;
+  height: 50vh;
+  overflow: hidden;
+  align-items: center;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-y: hidden;
+}
+
+.navbar-burger span {
+  transition-duration: 0.35s !important;
+}
+
+@media only screen and (max-width: 768px) {
+  .slideInTop {
+    opacity: 0;
+    animation: fadeIn 1s ease-out 0.2s forwards;
+  }
+}

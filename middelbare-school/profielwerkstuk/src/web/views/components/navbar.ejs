@@ -1,0 +1,55 @@
+<!--
+ - Dit is de navbar die je op elke pagina vind.
+ - Een perfect voorbeeld van een component.
+-->
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const burger = document.querySelector('.navbar-burger');
+    const menu = document.querySelector('.navbar-menu');
+    burger.addEventListener('click', () => {
+      burger.classList.toggle('is-active');
+      menu.classList.toggle('is-active');
+    });
+  });
+</script>
+
+<div class="navbar is-mobile is-fixed-top has-text-white-bis">
+
+  <div class="navbar-brand">
+    <a class="navbar-item" href="/" >
+      <img src="https://i.imgur.com/ipKCF4D.png" width="28px" height="28px">
+    </a>
+    <div class="navbar-burger">
+        <span></span>
+        <span></span>
+        <span></span>
+      </div>
+  </div>
+
+  <div class="navbar-menu">
+    <div class="navbar-end">
+      <a class="navbar-item" href="/contact">
+        Contact
+      </a>
+      <% if (credentials) { %>
+        <a class="navbar-item" href="/newPost">
+          Nieuwe Post
+        </a>
+      <% } %>
+
+      <% if (credentials) { %>
+        <a class="navbar-item" href="/users/<%= credentials.username %>">
+          <%= credentials.username %>
+        </a>
+      <% } %>
+
+        <% if (credentials) {  %>
+          <a class="navbar-item" href="/logout">Log uit</a>
+        <% } else { %>
+          <a class="navbar-item" href="/login">Log in</a>
+        <% } %>
+      </div>
+    </div>
+  </div>
+</div>

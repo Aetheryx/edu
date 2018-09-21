@@ -1,0 +1,37 @@
+<!--
+ - Dit is een component voor het schrijven van comments.
+ - Dit component wordt gebruikt aan het einde van een post, zodat mensen een comment kunnen schrijven op de post.
+-->
+
+<script>
+  function onSubmit (elem) {
+    const ta = elem.querySelector('textarea');
+    if (!ta.value) {
+      alert('Vul iets in.');
+      return false;
+    }
+    return true;
+  }
+</script>
+
+<article class="media">
+  <div class="media-content">
+    <form action="/posts/<%= post._id %>/comment" method="POST" onsubmit="return onSubmit(this)">
+
+      <div class="field">
+        <p class="control">
+          <textarea class="textarea" name="content" placeholder="Schrijf een comment..."></textarea>
+        </p>
+      </div>
+
+      <nav class="level">
+        <div class="level-left">
+          <div class="level-item">
+            <input type="submit" class="button is-info">
+          </div>
+        </div>
+      </nav>
+
+    </form>
+  </div>
+</article>

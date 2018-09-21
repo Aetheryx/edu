@@ -1,0 +1,58 @@
+<!--
+- Het index bestand. 
+- Dit is ook meteen waar alle post gerendered worden en waar de filter functie is.
+-->
+
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top has-text-white">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <title>PNCForum</title>
+
+    <script>
+      async function filterSearch (elem) {
+        // Deze functie wordt opgeroepen wanneer er getypt wordt in de filter input.
+        // De functie gaat elke post na en kijkt of de post een categorie heeft die voldoet aan de eisen.
+        for (const item of document.querySelectorAll('.section')[1].children) {
+          item.style.display = item
+            .getAttribute('categories')
+            .split(', ')
+            .some(cat =>
+              cat.toLowerCase().includes(elem.value.toLowerCase())
+            ) ? '' : 'none';
+        }
+      }
+    </script>
+  </head>
+
+  <body>
+    <%- include('components/navbar', { credentials: locals.credentials }) %>
+
+    <%- include('components/hero', {
+      class: 'is-info is-small',
+      title: 'Welkom bij mijn PWS.',
+      style: 'height: 25vh; padding: 0;'
+    }) %>
+
+    <!-- De zoekbar voor categorien -->
+    <section class="section fadeIn" style="padding: 0;">
+      <div class="control container">
+        <label class="label" style="color: #fff">Zoek op categorie...</label>
+        <input class="input" type="text" oninput="filterSearch(this)">
+      </div>
+    </section>
+
+    <!-- Dit zijn de posts zelf. -->
+    <section class="section fadeIn">
+      <% for (const post of posts) { %>
+        <%- include('components/indexPost', { post }) %>
+      <% } %>
+    </section>
+  </body>
+</html>

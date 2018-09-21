@@ -1,0 +1,45 @@
+<!--
+ - De loguit pagina.
+ - Voordat een gebruiker deze pagina bezoekt zijn ze eigenlijk al uitgelogd door Express.
+ - Het enige wat we doen is een mooie pagina laten zien.
+-->
+
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top has-text-white">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>PNCForum</title>
+  </head>
+
+  <script>
+    const sleep = (m) => new Promise(r => setTimeout(r, m));
+    (async () => {
+      await sleep(1e3);
+
+      const subtitle = document.querySelector('h2.subtitle');
+
+      // We tellen van 5 tot 0, en op 0 wordt de gebruiker terug gestuurd naar de index pagina (/)
+      for (let i = 5; i > 0; --i) {
+        subtitle.innerHTML = `Klik hier om terug te gaan naar de home-pagina. Dit gebeurt automatisch over ${i} seconden.`
+        await sleep(1e3)
+      }
+      location.replace('/');
+    })();
+  </script>
+
+  <body>
+    <%- include('components/navbar', { credentials: locals.credentials }) %>
+
+    <%- include('components/hero', {
+      class: 'is-success',
+      title: 'Successvol uitgelogd',
+      subtitle: 'Klik hier om terug te gaan naar de home-pagina. Dit gebeurt automatisch over 5 seconden.',
+      href: '/'
+    }) %>
+
+  </body>
+</html>

@@ -1,0 +1,28 @@
+<!--
+ - Dit is een abstracte "error" pagina.
+ - Dit wordt vooral intern gebruikt als er wat fout gaat en de gebruiker het "mooi" moet zien.
+-->
+
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top has-text-white">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>PNCForum</title>
+  </head>
+
+  <body>
+    <%- include('components/navbar', { credentials: locals.credentials }) %>
+
+    <%- include('components/hero', {
+      class: 'is-danger is-small',
+      title: locals.title || '',
+      href: locals.href,
+      subtitle: locals.subtitle || '',
+      style: 'height: 25vh; padding: 0;'
+    }) %>
+  </body>
+</html>

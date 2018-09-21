@@ -1,0 +1,50 @@
+<!--
+ - Dit is de "login" div op /login. Hiermee loggen gebruikers in.
+ - Er wordt een <form> gestuurd naar Express die de gebruiker dan een sessie geeft.
+-->
+<label class="label is-large">
+  Log In
+</label>
+
+<form action="/login" method="POST">
+  
+  <div class="field">
+    <label class="label">
+      Gebruikersnaam
+    </label>
+    <div class="control">
+      <input type="text" name="username" class="input">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">
+      Wachtwoord
+    </label>
+    <div class="control">
+      <input type="password" name="password" class="input">
+    </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <label class="checkbox">
+        <input type="checkbox">
+        Blijf ingelogd
+      </label>
+    </div>
+  </div>
+
+  <div class="field" style="padding-top: 150px;">
+    <div class="field">
+      <input type="submit" value="Log in" class="button is-dark is-medium">
+    </div>
+
+    <div class="field">
+      <a class="button is-dark is-small" onclick="alert('Tja. Jammer voor je.')" href="#">
+        Wachtwoord vergeten?
+      </a>
+    </div>
+  </div>
+
+</form>

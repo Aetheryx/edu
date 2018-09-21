@@ -1,0 +1,8 @@
+Een klein uitleg bestand bij het concept van "views".
+
+De root folder (dus de bestanden die direct zijn in views) zijn bestanden die we direct kunnen oproepen vanuit Express.
+Dus, bijvoorbeeld, om de "logout" pagina te renderen (/src/web/views/logout.ejs) doen we in express "res.render('logout')".
+
+De components folder bevat "componenten". Deze componenten worden dan weer in andere ejs views opgeroepen.
+We hebben bijvoorbeeld een component genaamt "navbar". Dit is een component wat de navbar bevat, maar dus niet een webpagina als geheel.
+Dit is heel handig, omdat je dan niet in elke webpagina een navbar hoeft te kopieren en te plakken. Je plakt dan alleen een import() functie.

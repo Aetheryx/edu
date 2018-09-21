@@ -1,0 +1,20 @@
+<!--
+ - Dit is dus een post zoals je hem zou zien op /posts/id.
+ - Ge-exporteerd naar een component omdat het makkelijker is om ze apart te houden.
+-->
+
+<div class="container">
+  <div class="article card notification is-primary" style="margin-top: 5%;">
+    <p class="title is-4" style="margin-bottom: 6px;">
+      <%= post.title %>
+    </p>
+    <div class="content">
+      <%- post.content.replace(/\n/g, '<br>') %>
+    </div>
+    <div class="media-content" style="overflow-x: hidden; overflow-y: hidden;" >
+      <p class="subtitle is-6">
+        Geschreven door <%= post.author %>
+      </p>
+    </div>
+    <time>Op <%= new Date(post.createdAt).toLocaleString() %></time>
+  </div>

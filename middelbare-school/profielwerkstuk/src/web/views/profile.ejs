@@ -1,0 +1,46 @@
+<!--
+ - Dit is de pagina waar je een bepaalde gebruiker kunt zien; hun profiel.
+-->
+
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top has-text-white">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>PNCForum</title>
+  </head>
+  <body>
+    <%- include('components/navbar', { credentials: locals.credentials }) %>
+
+    <%- include('components/hero', {
+      class: 'is-info',
+      title: `Het profiel van ${locals.profile.username}`,
+      style: 'height: 12vh;'
+    }) %>
+
+    <div class="container notification is-info fadeIn" style="margin-top: 15px;">
+      <table class="table" style="margin: auto;">
+        <thead>
+          <tr>
+            <th>Naam</th>
+            <th>Geslacht</th>
+            <th>Email</th>
+            <th>Aanmaakdatum</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th><%= locals.profile.username %></th>
+            <th><%= locals.profile.geslacht %></th>
+            <th><%= locals.profile.email %></th>
+            <th><%= new Date(locals.profile.createdAt).toLocaleString() %></th>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+  </body>
+</html>

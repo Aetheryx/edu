@@ -1,0 +1,36 @@
+<!--
+- De login pagina. 
+- In dit bestand worden de login en signup componenten geimporteerd.
+-->
+
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top has-text-white">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>PNCForum</title>
+  </head>
+  <body>
+    <%- include('components/navbar', { credentials: locals.credentials }) %>
+
+    <div class="container slideInTop" style="margin-top: 30px;">
+      <div class="columns is-desktop">
+        <div class="column"></div>
+
+        <div class="column notification is-primary">
+          <%- include('components/login') %>
+        </div>
+
+        <div class="column notification is-primary">
+          <%- include('components/signup') %>
+        </div>
+
+      <div class="column"></div>
+        
+      </div>
+    </div>
+  </body>
+</html>

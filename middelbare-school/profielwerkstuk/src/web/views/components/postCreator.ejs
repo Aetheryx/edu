@@ -1,0 +1,76 @@
+<!--
+ - Dit is de "post creator" - met dit component schrijven gebruikers hun text
+ - en verstuurt een form de data naar Express.
+ - Express verstuurd ze dan naar de post.
+-->
+
+<script>
+  function onSubmit (form) {
+    const [ title, content, categories ] = [...form.children].map(i => i.children[1].children[0].value);
+
+    if (!title) {
+      alert('Vul een titel in.');
+      return false;
+    }
+
+    if (!content) {
+      alert('Vul de inhoud in.');
+      return false;
+    }
+
+    if (!categories) {
+      alert('Vul minstens een categorie in.');
+      return false;
+    }
+
+    return true;
+  }
+</script>
+
+<p class="title is-4" style="color: #363636">
+  Nieuwe Post
+</p>
+
+<form action="/createPost" method="POST" onsubmit="return onSubmit(this)">
+  <div class="field">
+    <label class="label">
+      Title
+    </label>
+    <div class="control">
+      <input class="input" type="text" name="title" placeholder="The title of your post">
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">
+      De inhoud
+    </label>
+    <div class="control">
+      <textarea class="textarea" name="content" placeholder="De inhoud van de post"></textarea>
+    </div>
+  </div>
+
+  <div class="field">
+    <label class="label">
+      Categorieen
+    </label>
+    <div class="control">
+      <textarea class="input" name="categories" placeholder="Koken, knutselen"></textarea>
+    </div>
+    <p class="help">
+      Gescheiden met kommas, dus bijvoorbeeld <code>DIY, Elektronica</code>.
+    </p>
+  </div>
+
+  <div class="field is-grouped">
+    <p class="control">
+      <input type="submit" value="Submit" class="button is-dark">
+    </p>
+    <p class="control">
+      <button type="button" class="button is-light" onclick="location.replace('/')">
+        Annuleer
+      </button>
+    </p>
+  </div>
+
+</form>

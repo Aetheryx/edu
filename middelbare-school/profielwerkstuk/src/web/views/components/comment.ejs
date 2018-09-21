@@ -1,0 +1,15 @@
+<!--
+ - Dit is een component voor één comment op één post.
+-->
+
+<article class="media is-info notification">
+    <div class="media-content">
+      <div class="content">
+        <p>
+          <strong><%= comment.author %></strong> <small><%= new Date(comment.createdAt).toLocaleString() %></small>
+          <br>
+          <%- comment.content.replace(/\n/g, '<br>') %>
+        </p>
+      </div>
+    </div>
+  </article>

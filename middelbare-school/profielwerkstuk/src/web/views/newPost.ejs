@@ -1,0 +1,33 @@
+<!--
+ - De pagina die gebruikers bezoeken om een nieuwe post te schrijven.
+ - Dit is alleen de pagina zelf. De div die gebruikers gebruiken om de tekst te schrijven is ge-exporteerd naar components/postCreator.ejs.
+-->
+
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top has-text-white">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>PNCForum</title>
+  </head>
+
+  <body>
+    <%- include('components/navbar', { credentials: locals.credentials }) %>
+
+    <% if (!credentials) { %>
+      <%- include('components/hero', {
+        class: 'is-danger',
+        title: 'Je moet je inloggen om een post te maken.',
+        subtitle: 'Klik hier om je in te loggen of om een account aan te maken.',
+        href: '/login'
+      }) %>
+    <% } else { %>
+      <div class="container is-primary notification" style="margin-top: 5%;">
+        <%- include('components/postCreator') %> <!-- Het is hier handig om het bestand te exporteren als component, omdat het in een loop zit. -->
+      </div>
+    <% } %>
+  </body>
+
+</html>

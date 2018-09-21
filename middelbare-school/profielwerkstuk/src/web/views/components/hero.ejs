@@ -1,0 +1,32 @@
+<!--
+ - Dit is een abstract component voor een "hero": een hero is een component wat lijkt op een heading.
+ - Hero's gebruiken we voor korte tekst, zoals informatie of een titel.
+-->
+
+
+<div class="vertical-center fadeIn" style="<%= locals.style || '' %>">
+  <section class="hero <%= locals.class || 'is-primary' %>" style="display: flex; width: 100%;">
+
+    <% if (locals.href) { %>
+      <a href="<%= locals.href %>">
+    <% } %>
+
+    <div class="hero-body" style="padding: 40px;">
+      <div class="container">
+        <h1 class="title is-primary">
+          <%= title %>
+        </h1>
+        <% if (locals.subtitle) { %>
+          <h2 class="subtitle">
+            <%- locals.subtitle %>
+          </h2>
+        <% } %>
+      </div>
+    </div>
+
+    <% if (locals.href) { %>
+      </a>
+    <% } %>
+    
+  </section>
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top has-text-white">
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"></script>
+
+    <title>PNCForum</title>
+  </head>
+
+  <body>
+    <%- include('components/navbar', { credentials: locals.credentials }) %>
+
+    <div class="vertical-center">
+      <div class="container fadeIn">
+        <div class="box notification is-primary">
+          <label class="label is-large">
+            Contact
+          </label>
+
+          <h3>
+            Voor vragen, feature-requests of problemen kan je terecht bij <a href="mailto:zainalih3c@gmail.com">zainalih3c@gmail.com</a>.
+          </h3>
+        </div>
+      </div>
+    </div>
+
+  </body>
+</html>

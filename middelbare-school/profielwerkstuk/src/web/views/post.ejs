@@ -1,0 +1,41 @@
+<!--
+ - De post pagina.
+ - Op deze pagina kunnen gebruikers een bepaalde post zien.
+ - Dit is ook weer alleen de pagina zelf; de div die hoort bij de post is ge-exporteerd naar components/post.ejs.
+-->
+
+<!DOCTYPE html>
+<html class="has-navbar-fixed-top has-text-white">
+
+  <head>
+    <link rel="stylesheet" type="text/css" href="/css/bulma.css">
+    <link rel="stylesheet" type="text/css" href="/css/style.css">
+        
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <title>PNCForum</title>
+  </head>
+
+  <body>
+    <%- include('components/navbar', { credentials: locals.credentials }) %>
+
+    <% if (!post) { %>
+      <%- include('components/hero', {
+        class: 'is-danger',
+        title: 'Deze post is niet gevonden.',
+        subtitle: 'Klik hier om terug te gaan.',
+        href: '/'
+      }) %>
+    <% } else { %>
+      <%- include('components/post', { post: locals.post }) %>
+
+      <hr style="background-color: #222">
+
+      <% for (const comment of comments) { %>
+        <%- include('components/comment', { comment }) %>
+      <% } %>
+
+      <%- include('components/commentCreator', { post: locals.post }) %>
+    <% } %>
+  </body>
+</html>
